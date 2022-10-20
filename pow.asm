@@ -35,9 +35,10 @@ main:
     li $v0 5
     syscall
     move $t1 $v0
+    add $t2 $t0 0
     loop:
     beq $t1 1 exit
-    mult $t0 $t0
+    mult $t0 $t2
     mflo $t0
     sub $t1 $t1 1
     j loop
