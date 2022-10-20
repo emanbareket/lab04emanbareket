@@ -31,20 +31,23 @@ main:
     syscall
     li $v0 5
     move $t2 $v0
-    slt $t3 $t0 $t1
-    beq $t3 1 true
-    li $t4 t1
-    true:
-        li $t4 $t0
-    slt $t3 $t4 $t2
-    beq $t3 1 four
-    li $v0 1
-    move $a0 $t2
-    syscall
-    j exit
-    four:
+    blt $t0 $t1 zero 
+    blt $t1 $t2 one
+    blt $t2 $t1 two
+    zero:
+        blt $t2 $t0 two
         li $v0 1
-        move $a0 $t4
+        move $a0 $t0
+        syscall
+        j exit
+    one:
+        li $v0 1
+        move $a0 $t1
+        syscall
+        j exit
+    two:
+        li $v0 1
+        move $a0 $t2
         syscall
         j exit
 
