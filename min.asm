@@ -39,16 +39,25 @@ main:
     blt $t2 $t1 two
     zero:
         blt $t2 $t0 two
+        li $v0 4
+        la $a0 respond
+        syscall
         li $v0 1
         move $a0 $t0
         syscall
         j exit
     one:
+        li $v0 4
+        la $a0 respond
+        syscall
         li $v0 1
         move $a0 $t1
         syscall
         j exit
     two:
+        li $v0 4
+        la $a0 respond
+        syscall
         li $v0 1
         move $a0 $t2
         syscall
